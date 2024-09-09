@@ -13,9 +13,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewPunkty;
     Button buttonRzuc;
     ImageView[] imageView ;
-    int[] obrazki = {R.drawable.kosc1, R.drawable.kosc2,
-            R.drawable.kosc3, R.drawable.kosc4,
-            R.drawable.kosc5,R.drawable.kosc6};
+    Kosc [] kosci = new Kosc[5];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +32,11 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(MainActivity.this,
-                                "Działa",
-                                Toast.LENGTH_SHORT)
-                                .show();
+
                         int suma =0;
                         for (int i = 0; i < imageView.length; i++) {
-                            int liczbaLosowa = (int)(Math.random()*6+1);
-                            suma = suma+liczbaLosowa;
-                            imageView[i].setImageResource(obrazki[liczbaLosowa-1]);
+                            kosci[i] = new Kosc();
+                            imageView[i].setImageResource(kosci[i].getIdObrazka());
                         }
 
                        textViewPunkty.setText(Integer.toString(suma));
